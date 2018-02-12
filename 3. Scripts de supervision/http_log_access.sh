@@ -2,13 +2,14 @@
 
 # Fichier	: http_log_access.sh
 # Fonction	: Permet de générer un fichier CSV à partir du journal de connexion du serveur
-#		  Apache, renseignant l'IP du visiteur et sa géolocalisation.
+#			  Apache, renseignant l'IP du visiteur et sa géolocalisation.
 # Planification	: Oui, toutes les heures.
 
 
 # Déclaration des constantes :
-LOG_FILE="/var/log/apache2/access.log";					readonly LOG_FILE
-CSV_FILE="/var/log/apache2/access.csv"; 				readonly CSV_FILE
+ERR_FILE="/var/log/apache2/http_log_access.log";						readonly ERR_FILE
+LOG_FILE="/var/log/apache2/access.log";									readonly LOG_FILE
+CSV_FILE="/var/log/apache2/access.csv";									readonly CSV_FILE
 HOUR=$(date | grep -oE '[0-9]{2}:[0-9]{2}:[0-9]{2}' | cut -d ':' -f1);	readonly HOUR
 
 # On insère les catégories dans le CSV local :
@@ -28,10 +29,10 @@ do
 	if [ "$HOURS" -eq "$(($HOUR-1))" ]
 	then
 		# Récupération de l'adresse IP :
-		IP=$(echo $line | grep -oE '^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
+		IP=$(echo $line | grep -oE '^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') 2> ERR_FILE
 
 		# Récupération des informations liées à cet IP (curl doit être installé) :
-		IP_INFO=$(curl -sg http://ip-api.com/csv/$IP)
+		IP_INFO=$(curl -sg http://ip-api.com/csv/$IP)  2> ERR_FILE
 
 		# On contrôle les échecs de la requête :
 		if [ $(echo $IP_INFO | cut -d ',' -f1) != "success" ]
@@ -44,8 +45,8 @@ do
 		else
 			# Récupération des informations de localisation :
 			IP_COUNTRY=$(echo $IP_INFO | cut -d ',' -f2)	# Le pays
-			IP_REGION=$(echo $IP_INFO | cut -d ',' -f5)	# La région
-			IP_CITY=$(echo $IP_INFO | cut -d ',' -f6)	# La ville
+			IP_REGION=$(echo $IP_INFO | cut -d ',' -f5)		# La région
+			IP_CITY=$(echo $IP_INFO | cut -d ',' -f6)		# La ville
 		fi
 
 		# Ecriture du CSV local :

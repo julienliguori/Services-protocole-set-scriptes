@@ -2,15 +2,15 @@
 
 # Fichier	: dns_connexion_state.sh
 # Fonction	: Permet de tester l'état de la connexion ainsi que de la résolution de nom.
-#		  Les résultats seront écrits dans un CSV et transférés au serveur HTTP.
+#			  Les résultats seront écrits dans un CSV et transférés au serveur HTTP.
 # Planification	: Oui, toutes les 5 minutes.
 
 
 # Déclaration des constantes :
-IP_HTTP="192.168.10.10"			     readonly IP_HTTP
-WEB_NAME="www.carnoflux.fr"		     readonly WEB_NAME
-CSV_FILE="state.csv"			     readonly CSV_FILE
-CSV_DESTINATION="/var/log/apache2/state.csv" readonly CSV_DESTINATION
+IP_HTTP="192.168.10.10"			     			readonly IP_HTTP
+WEB_NAME="www.carnoflux.fr"		     			readonly WEB_NAME
+CSV_FILE="state.csv"			     			readonly CSV_FILE
+CSV_DESTINATION="/var/log/apache2/state.csv"	readonly CSV_DESTINATION
 
 # On effectue un ping vers le serveur HTTP :
 PING=$(ping -qc 5 "$IP_HTTP")
