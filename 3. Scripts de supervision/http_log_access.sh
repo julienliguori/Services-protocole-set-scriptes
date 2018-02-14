@@ -26,7 +26,7 @@ do
 
 	# On vérifie si la connexion date de la dernière heure :
 	HOURS=$(echo $line | grep -oE ':[0-9]{2}:[0-9]{2}:[0-9]{2}' | cut -d ':' -f2)
-	if [ "$HOURS" -eq "$(($HOUR-1))" ]
+	if [ "$HOURS" -eq "$(($HOUR - 1))" ]
 	then
 		# Récupération de l'adresse IP :
 		IP=$(echo $line | grep -oE '^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') 2> ERR_FILE

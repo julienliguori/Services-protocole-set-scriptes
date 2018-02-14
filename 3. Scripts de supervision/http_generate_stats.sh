@@ -16,4 +16,4 @@ WEBSITE="/etc/apache2/sites-enabled/index.html"		readonly WEBSITE
 cat $HTTP_CSV $DNS_CSV > $TEMP_CSV
 
 # On génère le site Web (nécessite le script python "csv2http") :
-csv2http -o $WEBSITE $TEMP_CSV 2> ERR_FILE
+csv2html -o $WEBSITE $TEMP_CSV 2> ERR_FILE

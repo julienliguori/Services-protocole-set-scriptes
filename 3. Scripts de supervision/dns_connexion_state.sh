@@ -36,4 +36,4 @@ else
 fi
 
 # On envoie le fichier CSV local au serveur HTTP via SSH et la commande "scp" :
-scp $CSV_FILE username@$IP_HTTP:$CSV_DESTINATION
+scp -r -p $CSV_FILE username@$IP_HTTP:$CSV_DESTINATION
