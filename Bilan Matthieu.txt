@@ -1,0 +1,16 @@
+Prénom	: Matthieu
+Nom		: Carteron
+
+Rôle dans le projet : Responsable des scripts de supervision + Diaporamma
+
+Ce projet m'a été plus agréable que le précédent : j'ai mieux supporté le contexte de mise en place d'un système d'information.
+Etant donné que je n'ai jamais été à l'aise avec les réseaux et la mise en place de serveurs, j'ai opté pour la rédaction
+des scripts shell sous Linux. J'aime beaucoup l'environnement de développement Linux (tant qu'il ne me pose pas de problèmes
+insolubles).
+
+J'ai mis très peu de temps à rédiger l'ensemble des scripts pour la supervision du serveur HTTP.
+De plus, du fait que je ne suis plus chef du projet, une immense charge de travail et de responsabilités s'est ôté de mes épaules.
+Mais même si de mon côté, je suis parvenu à terminer ma partie assez rapidement, ce n'était pas le cas de tout le monde et
+j'ai donc dû essayer d'aider les autres, avec plus ou moins de succès.
+
+Ainsi, ce projet a été beaucoup plus reposant pour moi que le précédent.
